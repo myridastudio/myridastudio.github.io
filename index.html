@@ -1,16 +1,57 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Myrida Studio | Développement de Jeux Indépendants</title>
+		<title>Myrida Studio | Metroidvania & Game Dev</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* Ajustement pro pour les couleurs */
-			body.is-preload { background-color: #0f0f0f; }
-			.intro { background-color: #1a1a1a; }
-			h1, h2, h3 { color: #ffffff !important; }
-			.button.primary { background-color: #5d3fd3; box-shadow: none; } /* Un violet "Gaming" élégant */
+			/* VRAI STYLE DE MALADE (NEON/LED) */
+			body.is-preload { background-color: #050508; }
+			#wrapper { background-color: #0a0a10; }
+			
+			/* Effets de textes LED */
+			h1 { 
+				color: #fff !important; 
+				text-shadow: 0 0 10px #ff00aa, 0 0 20px #ff00aa, 0 0 40px #ff00aa !important; 
+				font-weight: 900 !important;
+				letter-spacing: 2px;
+			}
+			h2, h3 { 
+				color: #fff !important; 
+				text-shadow: 0 0 8px #00ffcc, 0 0 15px #00ffcc !important; 
+			}
+			p, span, li { color: #d0d0e0 !important; }
+			strong { color: #00ffcc !important; text-shadow: 0 0 5px #00ffcc88; }
+			
+			/* Bordures et ombres LED */
+			.intro { 
+				background-color: #0f0f18 !important; 
+				border-bottom: 2px solid #ff00aa; 
+				box-shadow: 0 10px 30px rgba(255, 0, 170, 0.2); 
+			}
+			
+			/* Bouton Primaire Néon */
+			.button.primary { 
+				background-color: transparent !important; 
+				border: 2px solid #00ffcc !important; 
+				color: #00ffcc !important; 
+				box-shadow: 0 0 10px #00ffcc inset, 0 0 10px #00ffcc !important;
+				text-transform: uppercase;
+				font-weight: bold;
+				transition: all 0.3s ease;
+			}
+			.button.primary:hover {
+				background-color: #00ffcc !important;
+				color: #000 !important;
+				box-shadow: 0 0 20px #00ffcc inset, 0 0 40px #00ffcc !important;
+			}
+
+			/* Icônes lumineuses */
+			.feature-icons li.icon:before {
+				color: #ff00aa !important;
+				text-shadow: 0 0 15px #ff00aa;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -19,79 +60,94 @@
 
 				<section class="intro">
 						<header>
-							<h1>Myrida Studio</h1>
-							<p>Créateurs d'expériences narratives et immersives basées au Québec. Propulsé par le moteur Godot.</p>
+							<h1>MYRIDA STUDIO</h1>
+							<p>Indie Game Studio | Montréal, QC.<br>Propulsé par la puissance de <strong>Godot 4.6</strong>.</p>
 							<ul class="actions">
-								<li><a href="#about" class="arrow scrolly"><span class="label">Découvrir</span></a></li>
+								<li><a href="#first" class="arrow scrolly"><span class="label">Entrer dans la matrice</span></a></li>
 							</ul>
 						</header>
 						<div class="content">
-							<span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="Ambiance Myrida Studio" /></span>
+							<span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="Logo Myrida Studio" style="filter: contrast(1.2) drop-shadow(0 0 10px #00ffcc);" /></span>
 						</div>
 					</section>
 
-				<section id="about">
+				<section id="first">
 						<header>
-							<h2>L'Histoire de Myrida Studio</h2>
+							<h2>L'Éclat du Masque</h2>
 						</header>
 						<div class="content">
-							<p><strong>Myrida Studio</strong> est né d'une volonté de repousser les limites du jeu indépendant au Québec. Fondé par une équipe de passionnés, notre studio se concentre sur la création de mondes riches, où le <i>game feel</i> et la narration se rencontrent pour offrir une expérience mémorable aux joueurs.</p>
-							<p>Nous croyons en une approche technique rigoureuse et transparente, utilisant des technologies de pointe comme Godot 4 pour garantir une fluidité parfaite dans nos titres.</p>
-						</div>
-					</section>
-
-				<section>
-						<header>
-							<h2>Projet Actuel : [Nom de ton jeu]</h2>
-						</header>
-						<div class="content">
-							<p><strong>En développement actif.</strong> Notre projet phare actuel est un Metroidvania ambitieux qui met l'accent sur une atmosphère unique et des mécaniques de jeu précises. Nous travaillons sans relâche pour peaufiner chaque détail, de la physique des mouvements aux effets visuels.</p>
-							<span class="image main"><img src="images/pic02.jpg" alt="Concept Art" /></span>
-							<p>La sortie est prévue entre 2026 et 2027. Restez à l'affût pour l'ouverture prochaine de notre page Steam et les premières annonces de wishlist.</p>
+							<p><strong>Un Metroidvania narratif sans compromis.</strong> Plongez dans un monde parallèle sombre et mystérieux à travers les yeux d'un enfant. Nous construisons une expérience où la fluidité des mouvements rencontre une histoire poignante.</p>
+							<span class="image main"><img src="images/pic02.jpg" alt="Screenshot L'Éclat du Masque" style="border: 1px solid #ff00aa; box-shadow: 0 0 20px rgba(255,0,170,0.3);" /></span>
+							<p>Sortie prévue : <strong>2026 - 2027</strong>. Notre objectif ? Atteindre les 30 000 wishlists sur Steam. Préparez-vous à ajouter le jeu à votre liste très bientôt.</p>
+							<ul class="actions">
+								<li><a href="#" class="button primary large">Soutenir le Projet (Bientôt)</a></li>
+							</ul>
 						</div>
 					</section>
 
 				<section>
 						<header>
-							<h2>Notre Expertise</h2>
+							<h2>L'ADN de notre Gameplay</h2>
 						</header>
 						<div class="content">
+							<p>Nous ne laissons rien au hasard. Chaque saut, chaque impact est calculé pour offrir un <strong>Game Feel</strong> irréprochable qui rivalise avec les références du genre.</p>
 							<ul class="feature-icons">
-								<li class="icon solid fa-code">Développement Godot 4</li>
-								<li class="icon solid fa-gamepad">Game Feel Précis</li>
-								<li class="icon solid fa-palette">Direction Artistique 2D</li>
-								<li class="icon solid fa-bolt">Optimisation Performance</li>
-								<li class="icon solid fa-users">Communauté Active</li>
-								<li class="icon solid fa-map">Mondes Immersifs</li>
+								<li class="icon solid fa-gamepad">Contrôles ultra-réactifs (Coyote Time, Hit Stop)</li>
+								<li class="icon solid fa-eye">Système de caméra Look-ahead dynamique</li>
+								<li class="icon solid fa-paint-brush">Assets 2D originaux créés avec passion</li>
+								<li class="icon solid fa-code">Architecture GDScript optimisée et robuste</li>
+								<li class="icon solid fa-music">Ambiance sonore et musicale immersive</li>
+								<li class="icon solid fa-vr-cardboard">Expérimentations VR (UEVR) en R&D</li>
 							</ul>
 						</div>
 					</section>
 
 				<section>
 						<header>
-							<h2>Nous Contacter</h2>
+							<h2>État d'Avancement</h2>
 						</header>
 						<div class="content">
-							<p>Vous êtes un éditeur, un membre de la presse ou un joueur curieux ? N'hésitez pas à nous écrire pour toute demande de collaboration ou d'information.</p>
+							<p>La transparence avec notre communauté est primordiale. Voici où nous en sommes :</p>
+							
+							<section>
+								<header>
+									<h3 style="color: #ff00aa !important;">Moteur et Prototypes</h3>
+									<p>Migration complète vers Godot 4.6 effectuée. Les mécaniques de base du protagoniste sont implémentées et le système de monde parallèle est fonctionnel.</p>
+								</header>
+							</section>
+
+							<section>
+								<header>
+									<h3 style="color: #00ffcc !important;">Direction Artistique</h3>
+									<p>Intégration des décors 2D en cours. Focus actuel sur le level design du premier biome et l'éclairage dynamique.</p>
+								</header>
+							</section>
+
+						</div>
+					</section>
+
+				<section>
+						<header>
+							<h2>Transmission Directe</h2>
+						</header>
+						<div class="content">
+							<p><strong>Rejoignez la résistance.</strong> Éditeurs, créateurs de contenu ou joueurs passionnés, nos canaux de communication sont ouverts.</p>
 							<ul class="actions">
-								<li><a href="mailto:ton_courriel@exemple.com" class="button primary large">Envoyer un courriel</a></li>
+								<li><a href="mailto:contact@myridastudio.com" class="button primary large">Initier le contact</a></li>
 							</ul>
 						</div>
 						<footer>
 							<ul class="items">
 								<li>
-									<h3>Email</h3>
-									<a href="mailto:ton_courriel@exemple.com">contact@myridastudio.com</a>
+									<h3>Base d'opérations</h3>
+									<span>Montréal, QC, Canada</span>
 								</li>
 								<li>
-									<h3>Localisation</h3>
-									<span>Montréal, Québec</span>
-								</li>
-								<li>
-									<h3>Suivez-nous</h3>
+									<h3>Réseaux</h3>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
+										<li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
 										<li><a href="#" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
 									</ul>
 								</li>
@@ -99,7 +155,7 @@
 						</footer>
 					</section>
 
-				<div class="copyright">&copy; Myrida Studio. Tous droits réservés.</div>
+				<div class="copyright" style="color: #444 !important;">&copy; Myrida Studio. Code & Design injectés.</div>
 
 			</div>
 
