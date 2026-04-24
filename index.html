@@ -1,267 +1,299 @@
 <!DOCTYPE HTML>
 <html lang="fr">
 	<head>
-		<title>Myrida Studio | Metroidvania & Game Development</title>
+		<title>Myrida Studio | Game Development</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
 		<style>
 			/* ==========================================================================
-			   SECTION SYSTEM - NOIR ET BLANC ALTERNÉ
+			   SYSTEME DE LANGUES (LOGIQUE D'AFFICHAGE)
 			   ========================================================================== */
 			
-			/* Global Reset & Typography */
-			body, html {
-				background-color: #000;
-				margin: 0;
-				padding: 0;
-				font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			/* Par défaut, on cache tout ce qui n'est pas la langue active */
+			[data-lang] { display: none; }
+			
+			/* Affichage de la langue active via la classe sur le body */
+			body.lang-en [data-lang="en"] { display: block; display: initial; }
+			body.lang-fr [data-lang="fr"] { display: block; display: initial; }
+			body.lang-es [data-lang="es"] { display: block; display: initial; }
+			body.lang-it [data-lang="it"] { display: block; display: initial; }
+
+			/* Sélecteur de langue en haut (Sticky) */
+			#language-picker {
+				position: fixed;
+				top: 0;
+				right: 0;
+				background: #000;
+				z-index: 10000;
+				padding: 10px 20px;
+				border-bottom: 1px solid #333;
+				display: flex;
+				gap: 15px;
 			}
 
-			#wrapper {
-				background-color: #000;
+			.lang-btn {
+				background: none;
+				border: none;
+				color: #555;
+				font-size: 0.7em;
+				font-weight: 900;
+				cursor: pointer;
+				text-transform: uppercase;
+				letter-spacing: 2px;
+				transition: 0.3s;
+				padding: 5px;
 			}
 
-			/* Sections Noires (Texte Blanc) */
+			.lang-btn:hover, .lang-btn.active {
+				color: #fff;
+				text-decoration: underline;
+			}
+
+			/* ==========================================================================
+			   DESIGN PRO MONOCHROME ALTERNÉ
+			   ========================================================================== */
+			
+			body, html { background-color: #000; margin: 0; padding: 0; }
+
+			/* Sections Noires */
 			section.dark-mode {
 				background-color: #000000 !important;
 				color: #ffffff !important;
-				padding: 6em 2em;
+				padding: 7em 2em;
 				border-bottom: 1px solid #111;
 			}
-
-			section.dark-mode h1, 
-			section.dark-mode h2, 
-			section.dark-mode h3 {
+			section.dark-mode h1, section.dark-mode h2 {
 				color: #ffffff !important;
 				text-transform: uppercase;
-				letter-spacing: 4px;
+				letter-spacing: 5px;
 				font-weight: 900;
 			}
 
-			section.dark-mode p {
-				color: #aaaaaa !important;
-			}
-
-			/* Sections Blanches (Texte Noir) */
+			/* Sections Blanches */
 			section.light-mode {
 				background-color: #ffffff !important;
 				color: #000000 !important;
-				padding: 6em 2em;
+				padding: 7em 2em;
 			}
-
-			section.light-mode h2, 
-			section.light-mode h3 {
+			section.light-mode h2 {
 				color: #000000 !important;
 				text-transform: uppercase;
-				letter-spacing: 4px;
+				letter-spacing: 5px;
 				font-weight: 900;
 			}
 
-			section.light-mode p {
-				color: #444444 !important;
-			}
-
-			/* ==========================================================================
-			   BOUTONS ET INTERACTIFS
-			   ========================================================================== */
-
-			/* Bouton sur fond Noir */
-			.dark-mode .button.primary {
-				background-color: #ffffff !important;
-				color: #000000 !important;
-				border-radius: 0;
-				font-weight: 800;
+			/* Boutons */
+			.button.primary {
+				border-radius: 0 !important;
 				letter-spacing: 2px;
-				transition: all 0.4s ease;
+				font-weight: 900;
+				text-transform: uppercase;
+				transition: 0.4s;
 			}
 
-			.dark-mode .button.primary:hover {
-				background-color: #333333 !important;
-				color: #ffffff !important;
-			}
+			.dark-mode .button.primary { background: #fff !important; color: #000 !important; }
+			.light-mode .button.primary { background: #000 !important; color: #fff !important; }
 
-			/* Bouton sur fond Blanc */
-			.light-mode .button.primary {
-				background-color: #000000 !important;
-				color: #ffffff !important;
-				border-radius: 0;
-				font-weight: 800;
-				letter-spacing: 2px;
-				transition: all 0.4s ease;
-			}
-
-			.light-mode .button.primary:hover {
-				background-color: #f0f0f0 !important;
-				color: #000000 !important;
-			}
-
-			/* ==========================================================================
-			   IMAGES (COULEURS NATURELLES)
-			   ========================================================================== */
-			
+			/* Images sans filtres */
 			.image img {
-				filter: none !important; /* On remet les couleurs normales */
+				filter: none !important;
 				border-radius: 0;
-				box-shadow: none;
-				border: 1px solid rgba(128, 128, 128, 0.2);
+				border: 1px solid rgba(128,128,128,0.2);
 			}
 
-			/* Feature Icons */
-			.feature-icons li.icon:before {
-				color: inherit !important;
-			}
+			.copyright { letter-spacing: 3px; font-size: 0.7em; padding: 3em; text-align: center; color: #444; }
 
-			/* ==========================================================================
-			   RESPONSIVE & SPACING
-			   ========================================================================== */
-			
-			@media screen and (max-width: 736px) {
-				section {
-					padding: 3em 1em !important;
-				}
-			}
 		</style>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload lang-fr">
+
+		<nav id="language-picker">
+			<button class="lang-btn active" onclick="setLang('fr')">FR</button>
+			<button class="lang-btn" onclick="setLang('en')">EN</button>
+			<button class="lang-btn" onclick="setLang('es')">ES</button>
+			<button class="lang-btn" onclick="setLang('it')">IT</button>
+		</nav>
 
 		<div id="wrapper">
 
 				<section class="intro dark-mode">
 					<header>
 						<h1>MYRIDA STUDIO</h1>
-						<p>L'excellence du jeu indépendant au service de la narration.<br />
-						Propulsé par <strong>Godot 4.6</strong> | Montréal, Québec.</p>
+						<p data-lang="fr">L'excellence du jeu indépendant | Montréal, QC.<br />Propulsé par <strong>Godot 4.6</strong>.</p>
+						<p data-lang="en">Excellence in Indie Gaming | Montreal, QC.<br />Powered by <strong>Godot 4.6</strong>.</p>
+						<p data-lang="es">Excelencia en juegos independientes | Montreal, QC.<br />Impulsado por <strong>Godot 4.6</strong>.</p>
+						<p data-lang="it">L'eccellenza del gioco indipendente | Montreal, QC.<br />Alimentato da <strong>Godot 4.6</strong>.</p>
+						
 						<ul class="actions">
-							<li><a href="#about" class="arrow scrolly"><span class="label">Explorer</span></a></li>
+							<li><a href="#about" class="arrow scrolly"><span class="label">Explore</span></a></li>
 						</ul>
 					</header>
 					<div class="content">
-						<span class="image fill" data-position="center">
-							<img src="images/tesettrk.png" alt="Myrida Studio Logo" />
-						</span>
+						<span class="image fill"><img src="images/tesettrk.png" alt="Logo" /></span>
 					</div>
 				</section>
 
 				<section id="about" class="light-mode">
 					<header>
-						<h2>Le Studio</h2>
+						<h2 data-lang="fr">Le Studio</h2>
+						<h2 data-lang="en">The Studio</h2>
+						<h2 data-lang="es">El Estudio</h2>
+						<h2 data-lang="it">Lo Studio</h2>
 					</header>
 					<div class="content">
-						<p>Fondé sur des bases de rigueur technique et de créativité sans limite, <strong>Myrida Studio</strong> s'est donné pour mission de créer des mondes où chaque pixel raconte une histoire.</p>
-						<p>Nous ne nous contentons pas de "faire des jeux". Nous développons des systèmes complexes, des physiques précises et des ambiances sonores qui transportent le joueur au-delà de l'écran. Notre équipe utilise les dernières avancées du moteur Godot pour garantir une performance optimale sur toutes les plateformes.</p>
+						<div data-lang="fr">
+							<p><strong>Myrida Studio</strong> est un pôle créatif dédié à la narration interactive et à l'innovation technique. Nous concevons des mondes immersifs où chaque détail compte.</p>
+						</div>
+						<div data-lang="en">
+							<p><strong>Myrida Studio</strong> is a creative hub dedicated to interactive storytelling and technical innovation. We design immersive worlds where every detail matters.</p>
+						</div>
+						<div data-lang="es">
+							<p><strong>Myrida Studio</strong> es un centro creativo dedicado a la narrativa interactiva y la innovación técnica. Diseñamos mundos inmersivos donde cada detalle cuenta.</p>
+						</div>
+						<div data-lang="it">
+							<p><strong>Myrida Studio</strong> è un centro creativo dedicato allo storytelling interattivo e all'innovazione tecnica. Progettiamo mondi immersivi dove ogni dettaglio conta.</p>
+						</div>
 					</div>
 				</section>
 
 				<section class="dark-mode">
 					<header>
-						<h2>L'Éclat du Masque</h2>
+						<h2 data-lang="fr">L'Éclat du Masque</h2>
+						<h2 data-lang="en">The Mask's Shard</h2>
+						<h2 data-lang="es">El Brillo de la Máscara</h2>
+						<h2 data-lang="it">Lo Splendore della Maschera</h2>
 					</header>
 					<div class="content">
-						<p><strong>Un voyage à travers les dimensions.</strong> Dans ce Metroidvania narratif, vous incarnez un enfant muni d'un masque antique capable de fissurer la réalité. Le gameplay alterne entre exploration plateforme exigeante et résolution de puzzles environnementaux basés sur le changement de monde.</p>
-						<span class="image main"><img src="images/unnamed (1).jpg" alt="L'Éclat du Masque Gameplay" /></span>
-						<p>Chaque zone est dessinée à la main, avec un souci du détail qui rend l'immersion totale. La sortie est prévue entre 2026 et 2027.</p>
-						<ul class="actions">
-							<li><a href="#" class="button primary large">Wishlist sur Steam</a></li>
-						</ul>
-					</div>
-				</section>
-
-				<section class="light-mode">
-					<header>
-						<h2>Expertise & Vision</h2>
-					</header>
-					<div class="content">
-						<p>Notre pipeline de production est conçu pour la qualité. Nous croyons en la puissance de l'open-source et en l'optimisation constante.</p>
-						<ul class="feature-icons">
-							<li class="icon solid fa-bolt"><strong>Performance :</strong> Temps de chargement quasi-nuls et 60 FPS constants.</li>
-							<li class="icon solid fa-code"><strong>GDScript Pro :</strong> Une architecture de code modulaire et évolutive.</li>
-							<li class="icon solid fa-layer-group"><strong>Level Design :</strong> Des mondes interconnectés avec un "flow" naturel.</li>
-							<li class="icon solid fa-microchip"><strong>Hardware :</strong> Optimisé pour les dernières générations de GPU.</li>
-							<li class="icon solid fa-headphones"><strong>Audio :</strong> Design sonore spatialisé pour une immersion 3D en 2D.</li>
-							<li class="icon solid fa-shield-alt"><strong>Sécurité :</strong> Protection des données et intégrité du code source.</li>
-						</ul>
-					</div>
-				</section>
-
-				<section class="dark-mode">
-					<header>
-						<h2>Feuille de Route</h2>
-					</header>
-					<div class="content">
-						<p>Nous suivons un plan de développement strict pour assurer une sortie à la hauteur des attentes.</p>
+						<span class="image main"><img src="images/unnamed (1).jpg" alt="Game Screenshot" /></span>
 						
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-										<th>Phase</th>
-										<th>Objectif</th>
-										<th>Statut</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Proto Alpha</td>
-										<td>Mécaniques de base et Physique</td>
-										<td>Terminé</td>
-									</tr>
-									<tr>
-										<td>Bêta Interne</td>
-										<td>Intégration du premier biome complet</td>
-										<td>En cours</td>
-									</tr>
-									<tr>
-										<td>Vertical Slice</td>
-										<td>Démo publique pour la presse</td>
-										<td>Q4 2026</td>
-									</tr>
-									<tr>
-										<td>Sortie Officielle</td>
-										<td>Lancement PC et Consoles</td>
-										<td>2027</td>
-									</tr>
-								</tbody>
-							</table>
+						<div data-lang="fr">
+							<p>Un Metroidvania narratif explorant des mondes parallèles. Incarnez un enfant face à une réalité brisée. Physique précise, ambiance sombre et mystères profonds.</p>
+							<p>Sortie prévue : <strong>2026-2027</strong>.</p>
 						</div>
+						<div data-lang="en">
+							<p>A narrative Metroidvania exploring parallel worlds. Play as a child facing a shattered reality. Precise physics, dark atmosphere, and deep mysteries.</p>
+							<p>Release date: <strong>2026-2027</strong>.</p>
+						</div>
+						<div data-lang="es">
+							<p>Un Metroidvania narrativo que explora mundos paralelos. Encarna a un niño frente a una realidad rota. Física precisa, atmósfera oscura y misterios profundos.</p>
+							<p>Lanzamiento: <strong>2026-2027</strong>.</p>
+						</div>
+						<div data-lang="it">
+							<p>Un Metroidvania narrativo che esplora mondi paralleli. Incarna un bambino di fronte a una realtà in frantumi. Fisica precisa, atmosfera cupa e misteri profondi.</p>
+							<p>Uscita prevista: <strong>2026-2027</strong>.</p>
+						</div>
+
+						<ul class="actions">
+							<li><a href="#" class="button primary large" data-lang="fr">Bientôt sur Steam</a>
+								<a href="#" class="button primary large" data-lang="en">Coming to Steam</a>
+								<a href="#" class="button primary large" data-lang="es">Pronto en Steam</a>
+								<a href="#" class="button primary large" data-lang="it">Presto su Steam</a>
+							</li>
+						</ul>
 					</div>
 				</section>
 
 				<section class="light-mode">
 					<header>
-						<h2>Contact</h2>
+						<h2 data-lang="fr">Technologie</h2>
+						<h2 data-lang="en">Technology</h2>
+						<h2 data-lang="es">Tecnología</h2>
+						<h2 data-lang="it">Tecnologia</h2>
 					</header>
 					<div class="content">
-						<p>Vous souhaitez collaborer avec Myrida Studio ou en savoir plus sur nos projets ? Nous sommes toujours à la recherche de nouveaux talents et de partenaires passionnés.</p>
-						<ul class="actions">
-							<li><a href="mailto:contact@myridastudio.com" class="button primary large">Envoyer une demande</a></li>
+						<ul class="feature-icons">
+							<li class="icon solid fa-code">
+								<strong data-lang="fr">Architecture GDScript :</strong><strong data-lang="en">GDScript Architecture:</strong><strong data-lang="es">Arquitectura GDScript:</strong><strong data-lang="it">Architettura GDScript:</strong>
+								<span data-lang="fr"> Optimisée pour Godot 4.6.</span><span data-lang="en"> Optimized for Godot 4.6.</span><span data-lang="es"> Optimizado para Godot 4.6.</span><span data-lang="it"> Ottimizzato per Godot 4.6.</span>
+							</li>
+							<li class="icon solid fa-bolt">
+								<strong data-lang="fr">Game Feel :</strong><strong data-lang="en">Game Feel:</strong><strong data-lang="es">Sensación de Juego:</strong><strong data-lang="it">Game Feel:</strong>
+								<span data-lang="fr"> Contrôles millimétrés.</span><span data-lang="en"> Precise controls.</span><span data-lang="es"> Controles precisos.</span><span data-lang="it"> Controlli millimetrici.</span>
+							</li>
 						</ul>
-						<hr />
-						<div class="items">
-							<section>
-								<h3>Studio</h3>
-								<p>Montréal, Québec, Canada</p>
-							</section>
-							<section>
-								<h3>Réseaux</h3>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
-								</ul>
-							</section>
-						</div>
 					</div>
 				</section>
 
-				<footer class="dark-mode" style="padding: 2em; text-align: center; font-size: 0.8em; letter-spacing: 2px;">
-					<div class="copyright">&copy; MYRIDA STUDIO. TOUS DROITS RÉSERVÉS.</div>
+				<section class="dark-mode">
+					<header>
+						<h2 data-lang="fr">Roadmap</h2>
+						<h2 data-lang="en">Roadmap</h2>
+						<h2 data-lang="es">Hoja de Ruta</h2>
+						<h2 data-lang="it">Roadmap</h2>
+					</header>
+					<div class="content">
+						<table>
+							<thead>
+								<tr>
+									<th data-lang="fr">Phase</th><th data-lang="en">Phase</th><th data-lang="es">Fase</th><th data-lang="it">Fase</th>
+									<th data-lang="fr">Statut</th><th data-lang="en">Status</th><th data-lang="es">Estado</th><th data-lang="it">Stato</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Alpha</td>
+									<td data-lang="fr">Terminé</td><td data-lang="en">Completed</td><td data-lang="es">Completado</td><td data-lang="it">Completato</td>
+								</tr>
+								<tr>
+									<td>Bêta</td>
+									<td data-lang="fr">En cours</td><td data-lang="en">In progress</td><td data-lang="es">En curso</td><td data-lang="it">In corso</td>
+								</tr>
+								<tr>
+									<td>Release</td>
+									<td>2027</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+
+				<section class="light-mode">
+					<header>
+						<h2 data-lang="fr">Contact</h2><h2 data-lang="en">Contact</h2><h2 data-lang="es">Contacto</h2><h2 data-lang="it">Contatto</h2>
+					</header>
+					<div class="content">
+						<p data-lang="fr">Rejoignez l'aventure Myrida Studio.</p>
+						<p data-lang="en">Join the Myrida Studio journey.</p>
+						<p data-lang="es">Únete a la aventura de Myrida Studio.</p>
+						<p data-lang="it">Unisciti all'avventura di Myrida Studio.</p>
+						
+						<ul class="actions">
+							<li><a href="mailto:contact@myridastudio.com" class="button primary large">E-Mail</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<footer class="dark-mode">
+					<div class="copyright">&copy; MYRIDA STUDIO. MONTREAL.</div>
 				</footer>
 
 		</div>
 
+		<script>
+			function setLang(lang) {
+				// Changer la classe du body
+				document.body.className = 'is-preload lang-' + lang;
+				
+				// Gérer l'état actif des boutons
+				const buttons = document.querySelectorAll('.lang-btn');
+				buttons.forEach(btn => {
+					btn.classList.remove('active');
+					if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+				});
+
+				// Sauvegarder la préférence
+				localStorage.setItem('selectedLanguage', lang);
+			}
+
+			// Charger la langue sauvegardée au démarrage
+			window.onload = function() {
+				const savedLang = localStorage.getItem('selectedLanguage') || 'fr';
+				setLang(savedLang);
+			}
+		</script>
+		
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
