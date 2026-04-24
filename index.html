@@ -1,126 +1,67 @@
 <!DOCTYPE HTML>
-<html lang="fr">
+<html>
 	<head>
-		<title>Myrida Studio | Metroidvania & Game Development</title>
+		<title>Myrida Studio | Metroidvania & Game Dev</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		
 		<style>
-			/* ==========================================================================
-			   SECTION SYSTEM - NOIR ET BLANC ALTERNÉ
-			   ========================================================================== */
+			/* VRAI STYLE NOIR ET BLANC (Ultra Minimaliste & Pro) */
+			body.is-preload { background-color: #000000; } /* Noir pur */
+			#wrapper { background-color: #000000; }
 			
-			/* Global Reset & Typography */
-			body, html {
-				background-color: #000;
-				margin: 0;
-				padding: 0;
-				font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-			}
-
-			#wrapper {
-				background-color: #000;
-			}
-
-			/* Sections Noires (Texte Blanc) */
-			section.dark-mode {
-				background-color: #000000 !important;
-				color: #ffffff !important;
-				padding: 6em 2em;
-				border-bottom: 1px solid #111;
-			}
-
-			section.dark-mode h1, 
-			section.dark-mode h2, 
-			section.dark-mode h3 {
-				color: #ffffff !important;
+			/* Typographie Épurée */
+			h1 { 
+				color: #ffffff !important; 
+				font-weight: 900 !important;
+				letter-spacing: 5px;
 				text-transform: uppercase;
-				letter-spacing: 4px;
-				font-weight: 900;
+				text-shadow: none !important; 
 			}
-
-			section.dark-mode p {
-				color: #aaaaaa !important;
-			}
-
-			/* Sections Blanches (Texte Noir) */
-			section.light-mode {
-				background-color: #ffffff !important;
-				color: #000000 !important;
-				padding: 6em 2em;
-			}
-
-			section.light-mode h2, 
-			section.light-mode h3 {
-				color: #000000 !important;
+			h2, h3 { 
+				color: #ffffff !important; 
+				font-weight: 300 !important; /* Police très fine pour l'élégance */
+				letter-spacing: 2px;
 				text-transform: uppercase;
-				letter-spacing: 4px;
-				font-weight: 900;
 			}
-
-			section.light-mode p {
-				color: #444444 !important;
-			}
-
-			/* ==========================================================================
-			   BOUTONS ET INTERACTIFS
-			   ========================================================================== */
-
-			/* Bouton sur fond Noir */
-			.dark-mode .button.primary {
-				background-color: #ffffff !important;
-				color: #000000 !important;
-				border-radius: 0;
-				font-weight: 800;
-				letter-spacing: 2px;
-				transition: all 0.4s ease;
-			}
-
-			.dark-mode .button.primary:hover {
-				background-color: #333333 !important;
-				color: #ffffff !important;
-			}
-
-			/* Bouton sur fond Blanc */
-			.light-mode .button.primary {
-				background-color: #000000 !important;
-				color: #ffffff !important;
-				border-radius: 0;
-				font-weight: 800;
-				letter-spacing: 2px;
-				transition: all 0.4s ease;
-			}
-
-			.light-mode .button.primary:hover {
-				background-color: #f0f0f0 !important;
-				color: #000000 !important;
-			}
-
-			/* ==========================================================================
-			   IMAGES (COULEURS NATURELLES)
-			   ========================================================================== */
+			p, span, li { color: #888888 !important; font-weight: 300; } /* Gris neutre très propre */
+			strong { color: #ffffff !important; font-weight: 700; } 
 			
-			.image img {
-				filter: none !important; /* On remet les couleurs normales */
-				border-radius: 0;
-				box-shadow: none;
-				border: 1px solid rgba(128, 128, 128, 0.2);
+			/* Séparations minimalistes */
+			.intro { 
+				background-color: #000000 !important; 
+				border-bottom: 1px solid #222222; 
+				box-shadow: none !important; 
+			}
+			
+			/* Bouton Primaire Monochrome (Style Luxe/Tech) */
+			.button.primary { 
+				background-color: #ffffff !important; 
+				border: 1px solid #ffffff !important; 
+				color: #000000 !important; 
+				box-shadow: none !important;
+				text-transform: uppercase;
+				font-weight: 700;
+				letter-spacing: 2px;
+				border-radius: 0px !important; /* Bords parfaitement droits */
+				transition: all 0.3s ease;
+			}
+			.button.primary:hover {
+				background-color: #000000 !important; 
+				color: #ffffff !important;
 			}
 
-			/* Feature Icons */
+			/* Icônes monochromes */
 			.feature-icons li.icon:before {
-				color: inherit !important;
+				color: #ffffff !important; 
+				text-shadow: none;
 			}
-
-			/* ==========================================================================
-			   RESPONSIVE & SPACING
-			   ========================================================================== */
 			
-			@media screen and (max-width: 736px) {
-				section {
-					padding: 3em 1em !important;
-				}
+			/* Images épurées (sans ombres, sans arrondis) */
+			.image img {
+				border-radius: 0px !important;
+				box-shadow: none !important;
+				border: 1px solid #333333; /* Cadre gris très discret */
 			}
 		</style>
 	</head>
@@ -128,146 +69,113 @@
 
 		<div id="wrapper">
 
-				<section class="intro dark-mode">
-					<header>
-						<h1>MYRIDA STUDIO</h1>
-						<p>L'excellence du jeu indépendant au service de la narration.<br />
-						Propulsé par <strong>Godot 4.6</strong> | Montréal, Québec.</p>
-						<ul class="actions">
-							<li><a href="#about" class="arrow scrolly"><span class="label">Explorer</span></a></li>
-						</ul>
-					</header>
-					<div class="content">
-						<span class="image fill" data-position="center">
-							<img src="images/tesettrk.png" alt="Myrida Studio Logo" />
-						</span>
-					</div>
-				</section>
-
-				<section id="about" class="light-mode">
-					<header>
-						<h2>Le Studio</h2>
-					</header>
-					<div class="content">
-						<p>Fondé sur des bases de rigueur technique et de créativité sans limite, <strong>Myrida Studio</strong> s'est donné pour mission de créer des mondes où chaque pixel raconte une histoire.</p>
-						<p>Nous ne nous contentons pas de "faire des jeux". Nous développons des systèmes complexes, des physiques précises et des ambiances sonores qui transportent le joueur au-delà de l'écran. Notre équipe utilise les dernières avancées du moteur Godot pour garantir une performance optimale sur toutes les plateformes.</p>
-					</div>
-				</section>
-
-				<section class="dark-mode">
-					<header>
-						<h2>L'Éclat du Masque</h2>
-					</header>
-					<div class="content">
-						<p><strong>Un voyage à travers les dimensions.</strong> Dans ce Metroidvania narratif, vous incarnez un enfant muni d'un masque antique capable de fissurer la réalité. Le gameplay alterne entre exploration plateforme exigeante et résolution de puzzles environnementaux basés sur le changement de monde.</p>
-						<span class="image main"><img src="images/unnamed (1).jpg" alt="L'Éclat du Masque Gameplay" /></span>
-						<p>Chaque zone est dessinée à la main, avec un souci du détail qui rend l'immersion totale. La sortie est prévue entre 2026 et 2027.</p>
-						<ul class="actions">
-							<li><a href="#" class="button primary large">Wishlist sur Steam</a></li>
-						</ul>
-					</div>
-				</section>
-
-				<section class="light-mode">
-					<header>
-						<h2>Expertise & Vision</h2>
-					</header>
-					<div class="content">
-						<p>Notre pipeline de production est conçu pour la qualité. Nous croyons en la puissance de l'open-source et en l'optimisation constante.</p>
-						<ul class="feature-icons">
-							<li class="icon solid fa-bolt"><strong>Performance :</strong> Temps de chargement quasi-nuls et 60 FPS constants.</li>
-							<li class="icon solid fa-code"><strong>GDScript Pro :</strong> Une architecture de code modulaire et évolutive.</li>
-							<li class="icon solid fa-layer-group"><strong>Level Design :</strong> Des mondes interconnectés avec un "flow" naturel.</li>
-							<li class="icon solid fa-microchip"><strong>Hardware :</strong> Optimisé pour les dernières générations de GPU.</li>
-							<li class="icon solid fa-headphones"><strong>Audio :</strong> Design sonore spatialisé pour une immersion 3D en 2D.</li>
-							<li class="icon solid fa-shield-alt"><strong>Sécurité :</strong> Protection des données et intégrité du code source.</li>
-						</ul>
-					</div>
-				</section>
-
-				<section class="dark-mode">
-					<header>
-						<h2>Feuille de Route</h2>
-					</header>
-					<div class="content">
-						<p>Nous suivons un plan de développement strict pour assurer une sortie à la hauteur des attentes.</p>
-						
-						<div class="table-wrapper">
-							<table>
-								<thead>
-									<tr>
-										<th>Phase</th>
-										<th>Objectif</th>
-										<th>Statut</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Proto Alpha</td>
-										<td>Mécaniques de base et Physique</td>
-										<td>Terminé</td>
-									</tr>
-									<tr>
-										<td>Bêta Interne</td>
-										<td>Intégration du premier biome complet</td>
-										<td>En cours</td>
-									</tr>
-									<tr>
-										<td>Vertical Slice</td>
-										<td>Démo publique pour la presse</td>
-										<td>Q4 2026</td>
-									</tr>
-									<tr>
-										<td>Sortie Officielle</td>
-										<td>Lancement PC et Consoles</td>
-										<td>2027</td>
-									</tr>
-								</tbody>
-							</table>
+				<section class="intro">
+						<header>
+							<h1>MYRIDA STUDIO</h1>
+							<p>Indie Game Studio | Montréal, QC.<br>Propulsé par la puissance de <strong>Godot 4.6</strong>.</p>
+							<ul class="actions">
+								<li><a href="#first" class="arrow scrolly"><span class="label">Découvrir le studio</span></a></li>
+							</ul>
+						</header>
+						<div class="content">
+							<span class="image fill" data-position="center"><img src="images/tesettrk.png" alt="Logo Myrida Studio" style="filter: grayscale(100%);" /></span>
 						</div>
-					</div>
-				</section>
+					</section>
 
-				<section class="light-mode">
-					<header>
-						<h2>Contact</h2>
-					</header>
-					<div class="content">
-						<p>Vous souhaitez collaborer avec Myrida Studio ou en savoir plus sur nos projets ? Nous sommes toujours à la recherche de nouveaux talents et de partenaires passionnés.</p>
-						<ul class="actions">
-							<li><a href="mailto:contact@myridastudio.com" class="button primary large">Envoyer une demande</a></li>
-						</ul>
-						<hr />
-						<div class="items">
-							<section>
-								<h3>Studio</h3>
-								<p>Montréal, Québec, Canada</p>
-							</section>
-							<section>
-								<h3>Réseaux</h3>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-									<li><a href="#" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
-								</ul>
-							</section>
+				<section id="first">
+						<header>
+							<h2>L'Éclat du Masque</h2>
+						</header>
+						<div class="content">
+							<p><strong>Un Metroidvania narratif sans compromis.</strong> Plongez dans un monde parallèle sombre et mystérieux à travers les yeux d'un enfant. Nous construisons une expérience où la fluidité des mouvements rencontre une histoire poignante.</p>
+							<span class="image main"><img src="images/unnamed (1).jpg" alt="Screenshot L'Éclat du Masque" /></span>
+							<p>Sortie prévue : <strong>2026 - 2027</strong>. Notre objectif ? Atteindre les 30 000 wishlists sur Steam. Préparez-vous à ajouter le jeu à votre liste très bientôt.</p>
+							<ul class="actions">
+								<li><a href="#" class="button primary large">Soutenir le Projet</a></li>
+							</ul>
 						</div>
-					</div>
-				</section>
+					</section>
 
-				<footer class="dark-mode" style="padding: 2em; text-align: center; font-size: 0.8em; letter-spacing: 2px;">
-					<div class="copyright">&copy; MYRIDA STUDIO. TOUS DROITS RÉSERVÉS.</div>
-				</footer>
+				<section>
+						<header>
+							<h2>L'ADN de notre Gameplay</h2>
+						</header>
+						<div class="content">
+							<p>Nous ne laissons rien au hasard. Chaque saut, chaque impact est calculé pour offrir un <strong>Game Feel</strong> irréprochable qui rivalise avec les références du genre.</p>
+							<ul class="feature-icons">
+								<li class="icon solid fa-gamepad">Contrôles ultra-réactifs (Coyote Time, Hit Stop)</li>
+								<li class="icon solid fa-eye">Système de caméra Look-ahead dynamique</li>
+								<li class="icon solid fa-paint-brush">Assets 2D originaux créés avec passion</li>
+								<li class="icon solid fa-code">Architecture GDScript optimisée et robuste</li>
+								<li class="icon solid fa-music">Ambiance sonore et musicale immersive</li>
+								<li class="icon solid fa-vr-cardboard">Expérimentations VR (UEVR) en R&D</li>
+							</ul>
+						</div>
+					</section>
 
-		</div>
+				<section>
+						<header>
+							<h2>État d'Avancement</h2>
+						</header>
+						<div class="content">
+							<p>La transparence avec notre communauté est primordiale. Voici où nous en sommes :</p>
+							
+							<section>
+								<header>
+									<h3>Moteur et Prototypes</h3>
+									<p>Migration complète vers Godot 4.6 effectuée. Les mécaniques de base du protagoniste sont implémentées et le système de monde parallèle est fonctionnel.</p>
+								</header>
+							</section>
+
+							<section>
+								<header>
+									<h3>Direction Artistique</h3>
+									<p>Intégration des décors 2D en cours. Focus actuel sur le level design du premier biome et l'éclairage dynamique.</p>
+								</header>
+							</section>
+
+						</div>
+					</section>
+
+				<section>
+						<header>
+							<h2>Transmission Directe</h2>
+						</header>
+						<div class="content">
+							<p><strong>Rejoignez l'aventure.</strong> Éditeurs, créateurs de contenu ou joueurs passionnés, nos canaux de communication sont ouverts.</p>
+							<ul class="actions">
+								<li><a href="mailto:contact@myridastudio.com" class="button primary large">Initier le contact</a></li>
+							</ul>
+						</div>
+						<footer>
+							<ul class="items">
+								<li>
+									<h3>Base d'opérations</h3>
+									<span>Montréal, QC, Canada</span>
+								</li>
+								<li>
+									<h3>Réseaux</h3>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-discord"><span class="label">Discord</span></a></li>
+										<li><a href="#" class="icon brands fa-youtube"><span class="label">YouTube</span></a></li>
+										<li><a href="#" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</footer>
+					</section>
+
+				<div class="copyright" style="color: #444444 !important;">&copy; Myrida Studio. Tous droits réservés.</div>
+
+			</div>
 
 		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
