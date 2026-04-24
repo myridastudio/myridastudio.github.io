@@ -6,56 +6,62 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
-			/* VRAI STYLE MODERNE & ÉPURÉ (Minimaliste & Pro) */
-			body.is-preload { background-color: #0b0c10; } /* Fond très sombre mais pas noir pur */
-			#wrapper { background-color: #12131a; } /* Gris anthracite profond */
+			/* VRAI STYLE NOIR ET BLANC (Ultra Minimaliste & Pro) */
+			body.is-preload { background-color: #000000; } /* Noir pur */
+			#wrapper { background-color: #000000; }
 			
-			/* Effets de textes élégants */
+			/* Typographie Épurée */
 			h1 { 
 				color: #ffffff !important; 
-				font-weight: 800 !important;
-				letter-spacing: 3px;
+				font-weight: 900 !important;
+				letter-spacing: 5px;
 				text-transform: uppercase;
-				text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important; 
+				text-shadow: none !important; 
 			}
 			h2, h3 { 
-				color: #f8fafc !important; /* Blanc cassé très propre */
-				font-weight: 600 !important; 
-				letter-spacing: 1px;
-			}
-			p, span, li { color: #94a3b8 !important; } /* Gris perle pour une lecture facile */
-			strong { color: #e2e8f0 !important; font-weight: 700; } /* Mise en évidence douce */
-			
-			/* Bordures et ombres modernes */
-			.intro { 
-				background-color: #0e0f14 !important; 
-				border-bottom: 1px solid #2a2d3d; /* Ligne de séparation très subtile */
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
-			}
-			
-			/* Bouton Primaire Élégant (Accent Indigo Moderne) */
-			.button.primary { 
-				background-color: #6366f1 !important; /* Indigo tech très tendance */
-				border: none !important; 
 				color: #ffffff !important; 
-				box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2) !important;
+				font-weight: 300 !important; /* Police très fine pour l'élégance */
+				letter-spacing: 2px;
 				text-transform: uppercase;
-				font-weight: 600;
-				letter-spacing: 1px;
-				border-radius: 6px !important; /* Bords légèrement arrondis */
+			}
+			p, span, li { color: #888888 !important; font-weight: 300; } /* Gris neutre très propre */
+			strong { color: #ffffff !important; font-weight: 700; } 
+			
+			/* Séparations minimalistes */
+			.intro { 
+				background-color: #000000 !important; 
+				border-bottom: 1px solid #222222; 
+				box-shadow: none !important; 
+			}
+			
+			/* Bouton Primaire Monochrome (Style Luxe/Tech) */
+			.button.primary { 
+				background-color: #ffffff !important; 
+				border: 1px solid #ffffff !important; 
+				color: #000000 !important; 
+				box-shadow: none !important;
+				text-transform: uppercase;
+				font-weight: 700;
+				letter-spacing: 2px;
+				border-radius: 0px !important; /* Bords parfaitement droits */
 				transition: all 0.3s ease;
 			}
 			.button.primary:hover {
-				background-color: #4f46e5 !important; /* Indigo plus foncé au survol */
-				transform: translateY(-2px); /* Petit effet de soulèvement */
-				box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+				background-color: #000000 !important; 
 				color: #ffffff !important;
 			}
 
-			/* Icônes modernes */
+			/* Icônes monochromes */
 			.feature-icons li.icon:before {
-				color: #6366f1 !important; /* Même indigo que les boutons */
+				color: #ffffff !important; 
 				text-shadow: none;
+			}
+			
+			/* Images épurées (sans ombres, sans arrondis) */
+			.image img {
+				border-radius: 0px !important;
+				box-shadow: none !important;
+				border: 1px solid #333333; /* Cadre gris très discret */
 			}
 		</style>
 	</head>
@@ -72,7 +78,7 @@
 							</ul>
 						</header>
 						<div class="content">
-							<span class="image fill" data-position="center"><img src="images/tesettrk.png" alt="Logo Myrida Studio" style="filter: contrast(1.1); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" /></span>
+							<span class="image fill" data-position="center"><img src="images/tesettrk.png" alt="Logo Myrida Studio" style="filter: grayscale(100%);" /></span>
 						</div>
 					</section>
 
@@ -82,10 +88,10 @@
 						</header>
 						<div class="content">
 							<p><strong>Un Metroidvania narratif sans compromis.</strong> Plongez dans un monde parallèle sombre et mystérieux à travers les yeux d'un enfant. Nous construisons une expérience où la fluidité des mouvements rencontre une histoire poignante.</p>
-							<span class="image main"><img src="images/unnamed (1).jpg" alt="Screenshot L'Éclat du Masque" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);" /></span>
+							<span class="image main"><img src="images/unnamed (1).jpg" alt="Screenshot L'Éclat du Masque" /></span>
 							<p>Sortie prévue : <strong>2026 - 2027</strong>. Notre objectif ? Atteindre les 30 000 wishlists sur Steam. Préparez-vous à ajouter le jeu à votre liste très bientôt.</p>
 							<ul class="actions">
-								<li><a href="#" class="button primary large">Soutenir le Projet (Bientôt)</a></li>
+								<li><a href="#" class="button primary large">Soutenir le Projet</a></li>
 							</ul>
 						</div>
 					</section>
@@ -160,7 +166,7 @@
 						</footer>
 					</section>
 
-				<div class="copyright" style="color: #64748b !important;">&copy; Myrida Studio. Tous droits réservés.</div>
+				<div class="copyright" style="color: #444444 !important;">&copy; Myrida Studio. Tous droits réservés.</div>
 
 			</div>
 
